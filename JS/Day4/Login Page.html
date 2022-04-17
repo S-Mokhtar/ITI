@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <style>
+        *{
+            margin: auto;
+        }
+        #btn{
+            background-color: rgb(49, 156, 49);
+            color: white;
+            padding: 7px;
+            width: 220px;
+            margin: 7px;
+            border: none;
+        }
+        .text{
+            background-color: rgb(190, 184, 184);
+            padding: 7px;
+            width: 220px;
+            margin: 7px;
+            border: none;
+        }
+    </style>
+</head>
+<body>
+    <form onsubmit="ajax(event)">
+        <input class="text" type="text" placeholder="username"/><br>
+        <input class="text" type="text" placeholder="password"/><br>
+        <button id="btn">LOGIN</button>
+    </form>
+    <div id="result">
+
+    </div>
+    <script>
+        function validateForm(e){
+            e.preventDefault();
+            var valUsername=document.getElementsByClassName("text")[0].value;
+            var valPass=document.getElementsByClassName("text")[1].value;
+           /* if(valUsername==="admin" && valPass==="123"){
+                document.getElementById("result").innerHTML="Welcome"
+            }
+            else{
+                document.getElementById("result").innerHTML="Not registered"
+            }*/
+            if(valUsername!=""){
+                if(valPass.search(/[a-z]/) < 0){
+                    document.getElementById("result").innerHTML="Your password must contain at least one small letter"
+                }
+                else if(valPass.search(/[A-Z]/) < 0 ){
+                    document.getElementById("result").innerHTML="Your password must contain at least one capital letter"
+                }
+                else if(valPass.search(/[0-9]/) < 0 ){
+                    document.getElementById("result").innerHTML="Your password must contain at least one digit"
+                }
+                else if(valPass.length < 8){
+                    document.getElementById("result").innerHTML="Your password must be at least 8 characters"
+                }
+                else{
+                    document.getElementById("result").innerHTML="Valid username & password"
+                }
+            }
+            else{
+                document.getElementById("result").innerHTML="You must enter a username"
+            }
+        }
+        
+        async function ajax (e){
+            validateForm(e);
+            var userObj = {
+               "email": "eve.holt@reqres.in",
+               "password": "cityslicka2"
+            }
+            try{
+            var res = await fetch("https://reqres.in/api/login",{
+                method:"post",
+                body:JSON.stringify(userObj),
+                headers:{
+                    "content-type":"application/json"
+                }
+            });
+
+            var obj = await res.json();
+            if(obj.token){
+                alert("Login Successfully");
+            }else{
+                alert(obj.error);
+            }
+        }catch(err){
+            console.log(err);
+        }
+        }
+    </script>
+</body>
+</html>

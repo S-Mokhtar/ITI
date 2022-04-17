@@ -1,0 +1,78 @@
+1-RewriteEngine On 
+RewriteCond %{HTTPS} off 
+RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI}
+
+2-
+    1-Setup laravel framework (iti.org)
+	-Install Apache web server
+	$ sudo apt install apache2
+	$ sudo systemctl start apache2
+	$ sudo systemctl enable apache2
+	$ sudo systemctl status apache2
+	-Install PHP and additional PHP extensions
+	$ sudo apt install php libapache2-mod-php php-mbstring php-cli php-bcmath php-json php-xml php-zip php-pdo php-common php-tokenizer php-mysql
+	$ php -v
+	-Create Database for Laravel Application
+	$ sudo apt install mariadb-server
+	$ sudo  mysql -u root -p
+	CREATE DATABASE laravel_db;
+	CREATE USER 'ar'@'localhost' IDENTIFIED BY '1234';
+	GRANT ALL ON laravel_db.* TO 'ar'@'localhost';
+	FLUSH PRIVILEGES;
+	QUIT;
+	-Install Composer
+	$ curl -sS https://getcomposer.org/installer | php
+	$ sudo mv composer.phar  /usr/local/bin/composer
+	$ sudo chmod +x   /usr/local/bin/composer
+	$ composer --version
+	-Install Laravel 8
+	$ cd /var/www/html
+	$ sudo composer create-project laravel/laravel laravelapp
+	$ sudo chown -R www-data:www-data /var/www/html/laravelapp
+	$ sudo chmod -R 775 /var/www/html/laravelapp/storage
+	$ cd laravelapp
+	$ php artisan
+	-Configure Apache to serve Laravel site
+	$ sudo nano /etc/apache2/sites-available/laravel.conf
+	<VirtualHost *:80>
+	ServerName iti.org
+	ServerAdmin ar@iti.org
+        DocumentRoot /var/www/html/laravelapp/public
+	<Directory /var/www/html/laravelapp>
+	AllowOverride All
+	</Directory>
+	ErrorLog ${APACHE_LOG_DIR}/error.log
+	CustomLog ${APACHE_LOG_DIR}/access.log combined
+	</VirtualHost>
+	$ sudo a2ensite laravel.conf
+	$ sudo a2enmod rewrite
+	$ sudo systemctl restart apache2
+	
+	http://192.168.112.129/laravelapp/
+
+    2-Setup wordpress (wp.iti.org)
+	1-Create a database on mariadb (mysql)
+	$ sudo  mysql -u root -p
+	CREATE DATABASE mywordpress;
+	CREATE USER 'wpadmin'@'localhost' IDENTIFIED BY 'password';
+	GRANT ALL ON mywordpress.* TO 'wpadmin'@'localhost';
+	FLUSH PRIVILEGES;
+	QUIT;
+		Name: mywordpress;
+		User: wpadmin
+		Password: password
+	2-Download wordpress
+		cd /var/www/html
+		sudo wget https://wordpress.org/latest.tar.gz
+		sudo tar zxf latest.tar.gz
+	3-Wordpresw
+	we create wp.iti.org using wordpress
+		wp.iti.org
+		admin
+		5)IKxZEEnTh*Smg51U
+
+3-sudo apt install jmeter
+cd apache-jmeter-5.4.3/bin
+jmeter.bat
+after creating plan.jmx and savimg it using Jmeter GUI ...
+jmeter -n -t ../plan.jmx -l planResult.txt -e -o ../reports

@@ -1,0 +1,11 @@
+# depslib dependency file v1.0
+1638278215 source:c:\users\eleman\desktop\iti\data structure\lab 1\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
+1638728756 source:c:\users\eleman\desktop\iti\data structure & algorithms\lab 1\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <style>
+        .labels {
+            background-color: rgb(183, 183, 214);
+            color: rgb(57, 57, 93);
+            padding: 6px;
+            text-align: right;
+        }
+    </style>
+</head>
+
+<body>
+    <h2 style="color:rgb(135, 135, 190)"> Register - Create Account </h2>
+    <h4 style="background-color:rgb(199, 199, 226); border: 2px dotted black; padding:4px"> Field marked with <span
+            style="color:red">*</span> are
+        compulsory fields</h4>
+    <form>
+        <table style="margin-top: 0px;">
+            <tr>
+                <th style="width: 30%;"></th>
+                <th style="width: 70%;"></th>
+            </tr>
+            <tr>
+                <td class="labels"><label><span style="color:red">*</span> Your Name</label></td>
+                <td><input style="width:50%; height:20px" type="text" name="name"></td>
+            </tr>
+            <tr>
+                <td class="labels"><label><span style="color:red">*</span> E-Mail ID</label></td>
+                <td><input style="width:70%;height:20px" type="text" name="email"></td>
+            </tr>
+            <tr>
+                <td class="labels"><label>Alternate E-Mail ID</label></td>
+                <td><input style="width:70%;height:20px" type="text" name="alt-email"></td>
+            </tr>
+            <tr>
+                <td class="labels"><label>Your Phone</label></td>
+                <td>
+                    Country Code - City Code - Phone Number <br>
+                    <input style="width:15%;height:20px" type="text" name="country-code"> -
+                    <input style="width:10%;height:20px" type="text" name="city-code"> -
+                    <input style="width:30%;height:20px" type="text" name="ph-num">
+                </td>
+            </tr>
+            <tr>
+                <td class="labels"><label>Mobile Phone</label></td>
+                <td><input style="width:50%;height:20px" type="text" name="mob-ph"></td>
+            </tr>
+            <tr>
+                <td class="labels"><label><span style="color:red">*</span> Your Postal Address</label></td>
+                <td><textarea style="width:60%;" name="address" rows="4" cols="30"></textarea></td>
+            </tr>
+            <tr>
+                <td class="labels"><label><span style="color:red">*</span> Country</label></td>
+                <td><select style="width:40%;height:20px" name="country" id="country">
+                        <option>--------------Select One--------------</option>
+                    </select></td>
+            </tr>
+            <tr>
+                <td class="labels"><label><span style="color:red">*</span> Password</label></td>
+                <td><input style="width:40%;height:20px" type="text" name="pass" required></td>
+            </tr>
+            <tr>
+                <td class="labels"><label><span style="color:red">*</span> Re-Enter Password</label></td>
+                <td><input style="width:40%;height:20px" type="text" name="re-pass" required></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><input type="checkbox" id="accept" name="accept">
+                    <label for="accept">I accept the <a href="" style="color: blue;"> Terms of Use</a></label>
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><input type="submit" value="Continue>>">
+                    <input type="submit" value="Reset">
+                </td>
+            </tr>
+        </table>
+    </form>
+</body>

@@ -1,0 +1,29 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task3</title> 
+</head>
+<body>
+    <video id="mycamera" autoplay width="300" height="300"></video>
+    <canvas id="showscreenshot" ></canvas>
+    <img id="imgscreenshot"/>
+    <button onclick="takescreenshot()">Take screenshot</button>
+    <script>
+        async function showCamera(){
+            if(navigator.mediaDevices && navigator.mediaDevices.getUserMedia){
+                let stream = await navigator.mediaDevices.getUserMedia({video:true,audio:false});
+                mycamera.srcObject = stream;
+            }
+        }
+        showCamera();
+        function takescreenshot() {
+            showscreenshot.width = mycamera.videoWidth;
+            showscreenshot.height = mycamera.videoHeight;
+            let ctx = showscreenshot.getContext("2d");
+            ctx.drawImage(mycamera, 0, 0);
+        };
+    </script>
+</body>
+</html>

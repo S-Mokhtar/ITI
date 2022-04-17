@@ -1,0 +1,11 @@
+{
+    "name": "simple/verysimple",
+    "description" : "simple project",
+    "license": "MIT",
+    "require": {
+        "illuminate/database":"*"
+    },
+    "autoload":{
+      "files": ["config.php"]
+    }
+  }

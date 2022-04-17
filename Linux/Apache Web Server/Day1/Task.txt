@@ -1,0 +1,13 @@
+1-echo "shaimaa@gmail.com" | grep -c "^[a-zA-Z0-9]\+@[a-zA-Z0-9]\+\.[a-z]\{2,\}"
+2-echo "-1.2" | grep -c "^[-+]?[0-9]+.?[0-9]*$"
+3-touch backup.sh
+nano backup.sh
+tar --listed-incremental=/media/backup/snapshot.file -czpf /media/backup/home-backup-`date
++%d-%Y`.tar.gz ~
+sudo crontab -u $USER -e
+0 3 * * * /home/$USER/backup.sh
+4-#!/bin/bash
+echo $(date) >> ~/Desktop/syslog.txt
+free -m | awk 'NR==2{printf "Memory Usage: %s/%sMB (%.2f%%)\n", $3,$2,$3*100/$2 }' >> ~/Desktop/syslog.txt
+df -h | awk '$NF=="/"{printf "Disk Usage: %d/%dGB (%s)\n", $3,$2,$5}' >> ~/Desktop/syslog.txt
+top -bn1 | grep load | awk '{printf "CPU Load: %.2f\n", $(NF-2)}' >> ~/Desktop/syslog.txt

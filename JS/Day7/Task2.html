@@ -1,0 +1,30 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task2 Lab7</title>
+    <script>
+        async function getData(){
+            var resObj = await fetch("https://reqres.in/api/users?page=2");
+            var resBody = await resObj.json();
+
+            var usersArr = resBody.data;
+            var usersDiv = document.getElementById("users");
+            var usersHtml = usersArr.map(function (item){
+                return `
+                    <h4>${item.email}</h4>
+                    <img src="${item.avatar}" />
+                `;
+            })
+            var htmlCode = usersHtml.join("");
+            usersDiv.innerHTML=htmlCode;
+        }
+    </script>
+</head>
+<body onload="getData()">
+    <div id="users">
+
+    </div>
+</body>
+</html>

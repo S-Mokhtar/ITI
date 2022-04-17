@@ -1,0 +1,45 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task2</title>
+
+    <script>
+        var contacts=[
+            {
+                name:"",
+                phone:""
+            }
+        ]
+        var flag=true
+        do{
+            var op=prompt("Do you want to add or search or exit?")
+            switch(op){
+            case "add":
+                var newContact={}
+                newContact.name=prompt("Enter contact name")
+                newContact.phone=prompt("Enter contact phone")
+                contacts.push(newContact)
+            break;
+            case "search":
+                var searchKey=prompt("Enter name or key you want to search for: ")
+                for(var i=0;i<contacts.length;i++){
+                    var currentContact = contacts[i];
+                    if(searchKey==currentContact.name||searchKey==currentContact.phone){
+                        alert("name = "+currentContact.name +" phone = "+currentContact.phone);
+                        break;
+                    }
+                }
+                break;
+            case "exit":
+                flag=false
+            break;
+        }
+        }while(flag)
+        </script>
+</head>
+<body>
+    
+</body>
+</html>

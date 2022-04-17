@@ -1,0 +1,7 @@
+# depslib dependency file v1.0
+1638025538 source:c:\users\eleman\desktop\iti\intro to programming\lab3\main.c
+	<stdio.h>
+	<stdlib.h>
+	<conio.h>
+	<Windows.h>
+

@@ -1,0 +1,21 @@
+Part1:
+1-mongoimport --db iti --collection zips --file zips.json
+2-db.zips.find({state:"NY"})
+3-db.zips.find({pop:{$gte:1000}}, {_id:1})
+4-db.zips.updateMany({state: {$in: ['PA', 'VA']}}, {$set: {'check': true}})
+5-db.zips.find({"loc.0": {$gte: -55, $lte: -65}}, {_id: 0, pop: 1})
+6-db.zips.createIndex({state:1})
+7-db.zips.updateMany({state: {$nin: ['AK', 'NY']}}, {$mul: {pop: 1.2}});
+8-db.zips.updateOne({"loc.0":{$lt:-71}, state:{$ne:"MA"}, pop:{$lt:200}}, {$set:{pop:0}})
+
+Part2:
+1-db.zips.aggregate({ $match: {state: {$in: ['PA', 'KA']}}}, { $group: {_id: null, sum: {$sum: "$pop"}} })
+2-db.zips.find({state:{$ne:["PA", "KA"]}}).limit(5)
+3-db.zips.aggregate({ $match: {$and: [{state: 'AK'}, {"loc.0": {$lte: -55, $gte: -65}}]}}, { $group: {_id: null, sum: {$sum: "$pop"}} })
+4-db.zips.find({state:{$in:["AK", "PA"]}}).skip(7).sort({pop:1})
+5-db.zips.aggregate({$group: {_id: "$state", max: {$max: "$pop"}, min: {$min: "$pop"}}},{$out: {db: "iti", coll: "mypop"}})
+6-db.zips.aggregate({$group: {_id: "$state", sum: {$sum: "$pop"}}})
+7-db.zips.aggregate({$sort: {state: -1, city: -1}})
+8-db.zips.aggregate({$sort: {state: 1, city: 1}})
+9-db.zips.aggregate({$match: {$and: [{state: {$in: ['CA', 'NY']}},{pop: {$gt: 25000}}]}},{$group: {_id: null, sum: {$sum: "$pop"}}})
+10-db.zips.aggregate({$group: {_id: "$state", sum: {$sum: "$pop"}}})

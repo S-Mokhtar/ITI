@@ -1,0 +1,34 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bouns</title>
+
+    <script>
+        var flag=true
+        do{
+            var shape=prompt("Do you want to calculate area for square or rectangle or exit?")
+            switch(shape){
+            case "square":
+                var side=prompt("Enter the side of square")
+                var area = side*side
+                alert("Area of square= "+area)
+            break;
+            case "rectangle":
+                var length=prompt("Enter the length of rectangle")
+                var width=prompt("Enter the width of rectangle")
+                var area = length*width
+                alert("Area of rectangle= "+area)
+                break;
+            case "exit":
+                flag=false
+            break;
+        }
+        }while(flag)
+        </script>
+</head>
+<body>
+    
+</body>
+</html>

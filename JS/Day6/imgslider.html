@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Slider</title>
+    <style>
+            * {box-sizing: border-box}
+            body {font-family: Verdana, sans-serif; margin:0}
+            .images {display: none;text-align: center;}
+            img {vertical-align: middle;}
+
+            .slideshow-container {
+            max-width: 1000px;
+            position: relative;
+            margin: auto;
+            top:100px
+            }
+
+            .prev, .next {
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            width: auto;
+            padding: 16px;
+            margin-top: -22px;
+            color: white;
+            font-weight: bold;
+            font-size: 18px;
+            transition: 0.6s ease;
+            border-radius: 0 3px 3px 0;
+            user-select: none;
+            }
+
+            .next {
+            right: 0;
+            border-radius: 3px 0 0 3px;
+            }
+
+            .prev:hover, .next:hover {
+            background-color: rgba(0,0,0,0.8);
+            }
+
+            .numbertext {
+            color: #f2f2f2;
+            font-size: 25px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            }
+
+            .sliders {
+
+            height: 6px;
+            width: 58px;
+            margin: 0 2px;
+            background-color: #bbb;
+            border-radius: 50px;
+            display: inline-block;
+            transition: background-color 0.6s ease;
+            }
+
+            .active, .sliders:hover {
+            background-color: #717171;
+            }
+    </style>
+</head>
+<body>
+    <div class="slideshow-container">
+
+        <div class="images fade">
+            <div class="numbertext">1</div>
+          <img src="https://i.stack.imgur.com/pHq2y.png" style="width:100%">
+        </div>
+        
+        <div class="images fade">
+          <div class="numbertext">2</div>
+          <img src="https://i.stack.imgur.com/pHq2y.png" style="width:100%">
+        </div>
+        
+        <div class="images fade">
+          <div class="numbertext">3</div>
+          <img src="https://i.stack.imgur.com/pHq2y.png" style="width:100%">
+        </div>
+
+        <div class="images fade">
+            <div class="numbertext">4</div>
+            <img src="https://i.stack.imgur.com/pHq2y.png" style="width:100%">
+          </div>
+
+          <div class="images fade">
+            <div class="numbertext">5</div>
+            <img src="https://i.stack.imgur.com/pHq2y.png" style="width:100%">
+          </div>
+
+          <div class="images fade">
+            <div class="numbertext">6</div>
+            <img src="https://i.stack.imgur.com/pHq2y.png" style="width:100%">
+          </div>
+        
+        <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+        <a class="next" onclick="plusSlides(1)">&#10095;</a>
+        
+    </div>
+        <br><br><br><br><br><br><br>
+        <div style="text-align:center">
+          <span class="sliders" onclick="currentSlide(1)"></span> 
+          <span class="sliders" onclick="currentSlide(2)"></span> 
+          <span class="sliders" onclick="currentSlide(3)"></span>
+          <span class="sliders" onclick="currentSlide(4)"></span>
+          <span class="sliders" onclick="currentSlide(5)"></span>
+          <span class="sliders" onclick="currentSlide(6)"></span> 
+        </div>
+
+        <script>
+                    var slideIndex = 1;
+                    showSlides(slideIndex);
+
+                    function plusSlides(n) {
+                    showSlides(slideIndex += n);
+                    }
+
+                    function currentSlide(n) {
+                    showSlides(slideIndex = n);
+                    }
+
+                    function showSlides(n) {
+                    var i;
+                    var slides = document.getElementsByClassName("images");
+                    var sliderss = document.getElementsByClassName("sliders");
+                    if (n > slides.length) {slideIndex = 1}    
+                    if (n < 1) {slideIndex = slides.length}
+                    for (i = 0; i < slides.length; i++) {
+                        slides[i].style.display = "none";  
+                    }
+                    for (i = 0; i < sliderss.length; i++) {
+                        sliderss[i].className = sliderss[i].className.replace(" active", "");
+                    }
+                    slides[slideIndex-1].style.display = "block";  
+                    sliderss[slideIndex-1].className += " active";
+                    }
+        </script>
+</body>
+</html>

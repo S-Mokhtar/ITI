@@ -1,0 +1,18 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Dec 23, 2021, 10:35:50 AM
+    Author     : Abdo
+*/#text {
+ 
+  -fx-font: 150px "Georgia";
+  -fx-fill: #00ff00;
+  -fx-background-color: linear-gradient(from 0% 50% to 0% 100%, reflect, #ffffff,  #000000);
+ 
+}
+
+
+

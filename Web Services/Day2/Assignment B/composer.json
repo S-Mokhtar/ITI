@@ -1,0 +1,15 @@
+{   
+    "name": "simple/verysimple",
+    "description" : "simple project",
+    "license": "MIT",  
+
+    "require": {
+        "guzzlehttp/guzzle": "~6.0",
+        "monolog/monolog": " >=1.12.0",
+        "illuminate/database": "*"
+    },
+    "autoload": {
+        "classmap": ["Model"],
+        "files": ["config.php"]
+    }
+}

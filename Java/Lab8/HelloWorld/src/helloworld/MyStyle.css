@@ -1,0 +1,14 @@
+#text{
+    -fx-font: bold 25px "sans-serif" ;
+    -fx-fill: red;
+}  
+#r{
+    -fx-background-color: linear-gradient(to bottom, green, WHITE,BLACK);
+}
+#ref{
+    -fx-font: bold 25px "sans-serif" ;
+    -fx-fill: linear-gradient(transparent 20%,red 100%);
+    -fx-translate-y:30;
+    -fx-scale-y: -1;
+    -fx-opacity: 0.5;
+}

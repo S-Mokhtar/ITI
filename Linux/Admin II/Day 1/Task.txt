@@ -1,0 +1,15 @@
+1-sudo nano /etc/rsyslog.d/iti.conf
+  local7.notice	 /var/log/iti
+  sudo systemctl restart rsyslog
+  sudo apt install tuned
+  sudo systemctl enable --now tuned
+  sudo systemctl restart cron
+  crontab -e
+  */5 * * * * logger -p local7.notice $(uptime && sudo tuned-adm active)
+  
+
+2-sudo chgrp root /var/log/iti-load
+sudo chown root /var/log/iti-load
+sudo apt install acl
+getfacl /var/log/iti-load
+setfacl -m u:iti:r /var/log/iti-load

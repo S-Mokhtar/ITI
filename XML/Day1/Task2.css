@@ -1,0 +1,21 @@
+section
+{
+background-color: #6b56e48e;
+width: 100%;
+}
+chapter
+{
+display: block;
+margin-bottom: 30pt;
+margin-left: 0pt;
+}
+part
+{
+color: #0a3317;
+font-size: 20pt;
+}
+book
+{
+color: #a58827;
+font-size: 20pt;
+}

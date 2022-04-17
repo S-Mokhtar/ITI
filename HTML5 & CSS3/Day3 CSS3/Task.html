@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Lab_3 CSS3</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        .nav {
+            /* background-color: red ; */
+            width: 100%;
+            position: relative;
+            height: 100px;
+            border-bottom: 5px solid gray;
+        }
+
+        .log {
+            position: absolute;
+            left: 0;
+
+        }
+
+        .navTitle {
+            position: absolute;
+            right: 0px;
+            top: -40px
+        }
+
+        .fa-gg-circle:before {
+            font-size: 90px;
+            color: #d09220;
+        }
+
+        h1 {
+            font-size: 50px;
+            font-weight: 200;
+        }
+
+        h2 {
+            color: gray;
+            font-weight: 400;
+
+        }
+
+        header {
+            padding: 20px 0px;
+            display: flex;
+            justify-content: center;
+        }
+
+        section {
+            display: flex;
+            flex-direction:row;
+            flex-wrap:wrap;
+            justify-content: space-between;
+        }
+
+        .itemImg {
+            text-align: center;
+            color: gray;
+            
+        }
+
+        a {
+            color: gray;
+        }
+
+        .images {
+            width: 500px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="nav">
+            <div class="log"><i class="fa fa-gg-circle "></i></div>
+            <div class="navTitle">
+                <h1>JANE DOETTE </h1>
+                <p>FRONT-END NINJA</p>
+            </div>
+        </div>
+
+        <header>
+            <img src="img.webp" alt="Capture" />
+        </header>
+
+        <h2>Features Work</h2>
+        <section>
+
+            <div class="itemImg">
+                <img src="image.webp" alt="item1" class="images" />
+                <h3>APPIFY</h3>
+                <a href="#">http://github.com/Udacity/APPIFY/</a>
+            </div>
+            <div class="itemImg">
+                <img src="image.webp" alt="item2" class="images" />
+                <h3>SUNFLOWER</h3>
+                <a href="#">http://github.com/Udacity/SUNFLOWER/</a>
+            </div>
+            <div class="itemImg">
+                <img src="image.webp" alt="item3" class="images" />
+                <h3>BOKEH</h3>
+                <a href="#">http://github.com/Udacity/BOKEH/</a>
+            </div>
+        </section>
+
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!--<!DOCTYPE company SYSTEM "Task1.dtd">-->
+<?xml-stylesheet type="text/css" href="Task1.css"?>
+<?xml-stylesheet type="text/xsl" href="Task1.xsl"?> 
+<company>
+    <employee>
+        <name>Shaimaa</name>
+        <phones>
+            <phone type="home">035277301</phone>
+            <phone type="work">035332222</phone>
+            <phone type="moblie">01114464636</phone>
+        </phones>
+        <addresses>
+            <address>
+                <Street>151</Street>
+                <Building_Number>7</Building_Number>
+                <Region>Victoria</Region>
+                <City>Alex</City>
+                <Country>Egypt</Country>
+            </address>
+            <address>
+                <Street>60</Street>
+                <Building_Number>8</Building_Number>
+                <Region>Sedibeshr</Region>
+                <City>Alex</City>
+                <Country>Egypt</Country>
+            </address>
+        </addresses>
+        <e-mail>shaimaamukhtar177@gmail.com</e-mail>
+    </employee>
+
+    <employee>
+        <name>Sarah</name>
+        <phones>
+            <phone type="home">035467272</phone>
+            <phone type="work">035244637</phone>
+            <phone type="moblie">01111053393</phone>
+        </phones>
+        <addresses>
+            <address>
+                <Street>13</Street>
+                <Building_Number>9</Building_Number>
+                <Region>Elshatby</Region>
+                <City>Alex</City>
+                <Country>Egypt</Country>
+            </address>
+            <address>
+                <Street>13</Street>
+                <Building_Number>6</Building_Number>
+                <Region>Moharmbeek</Region>
+                <City>Alex</City>
+                <Country>Egypt</Country>
+            </address>
+        </addresses>
+        <e-mail>sarahibrahim@gmail.com</e-mail>
+    </employee>
+
+</company>

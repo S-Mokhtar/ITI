@@ -1,0 +1,16 @@
+In VM1:
+install sshpass,ssh-server
+disable firewall: sudo ufw disable
+sshpass -p 'rowan' ssh rowan@192.168.122.133 'df -h'
+sudo nano /etc/ssh/sshd_config set passwordauthentication no
+generate private public : openssl genrse -out admin.priv 2048
+generate public key: openssl rsa -in admin.priv -pubout > admin.pub
+ssh-key_gen -o
+sshpass -p 'password' ssh rowan@192.168.122.133(remote ip) "mkdir -p ~/.ssh"
+sshpass -p 'password' scp ~/.ssh/id_rsa.pub rowan@192.168.122.133:~/.ssh/authorized_keys 
+
+In VM2:
+install ssh-server
+disable firewall: sudo ufw disable
+sshpass -p 'rowan' ssh rowan@192.168.122.132 'df -h'
+

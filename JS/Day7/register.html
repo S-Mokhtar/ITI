@@ -1,0 +1,48 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        async function register(){
+            var emailElem = document.getElementById("email");
+            var passwordElem= document.getElementById("password");
+
+            var bodyObj = {
+                    "email": emailElem.value,
+                    "password": passwordElem.value
+                }
+
+
+                try
+                {
+                    var resObj = await fetch("https://reqres.in/api/register",{
+                        method:"post",
+                        body:JSON.stringify(bodyObj),
+                        headers:{
+                            "content-type":"application/json"
+                        }
+                    })
+
+                   
+                    var bodyObj = await resObj.json();
+
+                    if(bodyObj.token){
+                        localStorage.mytoken = bodyObj.token;
+                    }else{
+                        alert(bodyObj.error);
+                    }
+                }catch(err){
+                    console.log("a",err);
+                }
+            
+        }
+    </script>
+    Email : <input type="text" id="email" /><br/>
+    Password : <input type="text" id="password"/>
+    <button onclick="register()">Register</button>
+</body>
+</html>

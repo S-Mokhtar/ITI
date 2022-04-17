@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Task1</title>
+    </head>
+    <body>
+        <script>
+        const PI = 3.14;
+        class Shape{
+            constructor(x,y){
+                this.x=x;
+                this.y=y;
+            }
+            log() {
+            console.log('Circumference : ' + this.getCircumference() + ' ,Area : ' + this.getArea() + ' ,Type : ' + this.constructor.name);
+            }
+        }
+        class Rectangle extends Shape{
+            constructor(x,y,width,height){
+                super(x,y);
+                this.width=width;
+                this.height=height;
+            }
+            getCircumference() {
+            return ((this.width + this.height) * 2);
+            }
+            getArea() {
+                return (this.width * this.height);
+            }
+        }
+        class Square extends Rectangle{
+            constructor(x,y,width,height,length){
+                super(x,y,width,height);
+                this.length=length;
+            }
+            getCircumference() {
+            return ((this.length + this.length) * 2);
+            }
+            getArea() {
+                return (this.length * this.length);
+            }
+        }
+        class Oval extends Shape{
+            constructor(x,y,a,b){
+                super(x,y);
+                this.a=a;
+                this.b=b;
+            }
+            getCircumference() {
+            return ((this.a + this.b) * PI);
+            }
+            getArea() {
+                return (this.a * this.b * PI);
+            }
+        }
+        class Circle extends Oval{
+            constructor(x,y,a,b,r){
+                super(x,y,a,b);
+                this.r=r;
+            }
+            getCircumference() {
+            return ((this.r + this.r) * PI);
+            }
+            getArea() {
+                return (this.r * this.r * PI);
+            }
+        }
+        class DrawArea {
+            constructor(arr) {
+                this.arr = [];
+            }
+            add(myshape) {
+                this.arr.push(myshape)
+            }
+            print() {
+                for (let i = 0; i < this.arr.length; i++) {
+                    this.arr[i].log();
+                }
+            }
+        }
+        let myshape = new DrawArea();
+        myshape.add(new Rectangle(0, 0, 10, 5));
+        myshape.add(new Square(0, 0, 10, 5, 5));
+        myshape.add(new Oval(0, 0, 10, 5));
+        myshape.add(new Circle(0, 0, 10, 5, 5));
+        myshape.print();
+        </script>
+    </body>
+</html>

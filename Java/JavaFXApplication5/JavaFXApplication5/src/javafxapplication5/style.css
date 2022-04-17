@@ -1,0 +1,9 @@
+#container{
+    -fx-background-color: linear-gradient(to bottom,#865858, #8E7F7F,#865858);
+}
+.buttons{
+    -fx-background-color: #C1A3A3;
+
+}
+
+.buttons:hover {-fx-background-color: #9c8181;-fx-color:white;}

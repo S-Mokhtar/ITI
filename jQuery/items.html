@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <script src="jquery.min.js"></script>
+	<script src="jquery-ui.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script>
+
+        let cartTotal;
+        if (localStorage.getItem('cartTotal') == undefined) {
+            cartTotal = 0.0;
+        } else {
+            cartTotal = parseFloat(localStorage.getItem('cartTotal'));
+        }
+
+        $(() => {
+            let items = [];
+
+            $.ajax({
+                url: 'items.php',
+                success: (resp) => {
+                    items = resp;
+
+                    $('#ajax-error').addClass('hidden');
+                    renderItems();
+                },
+                error: () => {
+                    $('#ajax-error').removeClass('hidden');
+                },
+                complete: () => {
+                    $('#loader').addClass('hidden');
+                }
+            })
+
+            const renderItems = () => {
+                for (let item of items) {
+                    const newItem = $('.item.hidden').clone();
+
+                    newItem
+                        .removeClass('hidden')
+                        .appendTo('.repitems')
+                        .children('h5')
+                        .html(` ${item.price}`)
+
+                    newItem
+                        .children('img').attr('src', item.image)
+
+					newItem
+                            .children('p').html(`${item.description}`)
+
+                    newItem
+                        .children('h4').html(`${item.name}`)
+                }
+
+                $('.draggable').draggable({
+                    revert: "invalid",
+                    stack: ".draggable",
+                    handle: "img",
+                    helper: 'clone'
+                });
+                $('.droppable').droppable({
+                    accept: ".draggable",
+                    drop: function(event, ui) {
+                        var droppable = $(this);
+                        var draggable = ui.draggable;
+                        // Move draggable into droppable
+                        const it = draggable.clone()
+                        it.children('#add').addClass('d-none')
+                        it.children('#remove').removeClass('d-none')
+                        it.children('.numbers').removeClass('d-none')
+                        it.draggable({
+                            disabled: true
+                        })
+                        $(it).appendTo(droppable);
+                        let Price = draggable.find("h5").html();
+                        addToCartTotal(price);
+
+                    }
+                })
+            }
+
+            //use button buy
+            $('body').on('click', '#add', function() {
+                const btn = $(this);
+                const newElem = btn.parent('.item').clone();
+                newElem.children('#add').addClass('d-none')
+                newElem.children('#remove').removeClass('d-none')
+                newElem.children('.numbers').removeClass('d-none')
+                newElem.appendTo('.droppable')
+                price = newElem.children('h5').text()
+                addToCartTotal(price)
+            })
+
+            //use button remove
+            $('body').on('click', '#remove', function() {
+                const btn = $(this),
+                    price = btn.parent('.item').children('h5').text()
+                removeFromCarToTal(price);
+                remoElem = btn.parent('.item').remove()
+
+            })
+
+            //use button menus
+            $('body').on('click', '.menus', function() {
+                const btn = $(this),
+                    paren = btn.parent('.numbers');
+                orderValue = paren.children('span').text()
+                newValue = removeOrderByMenus(orderValue);
+                paren.children('span').html(newValue);
+
+                bigParent = paren.parent('.item');
+                price = bigParent.children('h5').text();
+                removeFromCarToTal(price);
+
+                if (newValue == 0) {
+                    bigParent.remove();
+                }
+            })
+
+            //remove order by -
+            const removeOrderByMenus = (orderValue) => {
+                v = parseInt(orderValue);
+                v = v - 1;
+                return v;
+            }
+
+            //use button plus
+            $('body').on('click', '.plus', function() {
+                const btn = $(this),
+                    paren = btn.parent('.numbers');
+                orderValue = paren.children('span').text()
+                newValue = addOrderByPlus(orderValue);
+                paren.children('span').html(newValue);
+
+                bigParent = paren.parent('.item');
+                price = bigParent.children('h5').text();
+                addToCartTotal(price);
+            })
+
+            //add order by +
+            const addOrderByPlus = (orderValue) => {
+                v = parseInt(orderValue);
+                v = v + 1;
+                return v;
+            }
+
+            // add price and tax calculation  
+            const addToCartTotal = (price) => {
+                wTax = parseInt(price * 1.14);
+                cartTotal += wTax;
+                $('.cart-total').html(!cartTotal ? '0' : cartTotal);
+            }
+
+            //remove price 
+            const removeFromCarToTal = (price) => {
+                wTax = parseInt(price * 1.14);
+                cartTotal -= wTax;
+                $('.cart-total').html(!cartTotal ? '0' : cartTotal);
+            }
+
+            addToCartTotal(0);
+        })
+    </script>
+    <style>
+        body {
+            background-color: #fdfdfd;
+        }
+        
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+        
+        .item {
+            flex-basis: 300px;
+            text-align: center;
+        }
+        
+        .cart-total {
+            color: blue;
+            font-size: 30px;
+            text-align: right;
+            border: solid 1px blue;
+            padding: 5px;
+            width: 25%;
+        }
+        
+        .hidden {
+            display: none;
+        }
+        
+        .error {
+            font-weight: bold;
+            color: red;
+        }
+        
+        .circle {
+            border-radius: 50% 60% 50% 60%;
+            width: 15%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class=" container ">
+        <div class="row">
+            <div class="cart-total col-md-12 d-flex justify-content-end"></div>
+        </div>
+    </div>
+
+    <div class="container container-fluid">
+        <div class="row">
+            <div class="col-md-10 col-sm-12 ">
+                <h2 class="ml-5 mt-5">McDonald's Menu</h2>
+                <menu>
+                    <div class="item hidden draggable rounded mt-1 mb-1 d-flex justify-content-around" style="background-color: #DCDCDC;">
+                        <h5 class="ml-4 mt-4 mr-5 d-flex justify-content-start" >65</h5>
+                        <h6 class="ml-4 mt-4 mr-5 d-flex justify-content-start " >Big Mac</h6>
+						<p>Two beef patties, that unbeatably tasty Big Mac sauce, melting signature cheese, crisp shredded lettuce, onions, pickles and a bun in the middle all between a toasted sesame seed bun</p>
+                        <img class=" mr-5 mt-2 mb-2 circle d-flex justify-content-center " src="big-mac.jpg" >
+                        <button class=" rounded m-2  " id="add">Select</button>
+                        <div class="d-none  numbers">
+                            <button class="menus">-</button>
+                            <span class="orderNumber">1</span>
+                            <button class="plus">+</button>
+                        </div>
+                        <button class=" rounded m-2 d-none" id="remove">remove</button>
+                    </div>
+                    <div class="repitems "></div>
+                </menu>
+            </div>
+            <div class="hidden error " id="ajax-error ">Error while retrieving items! Try again later</div>
+            <div class=" col-md-10 col-sm-12 ">
+                <h2 class=" d-flex justify-content-start ml-5 mt-5 ">Your Order</h2>
+                <div class="droppable xyz" style="background-color: #c1e0dead; height: 70%; "></div>
+            </div>
+        </div>
+    </div>
+    <button class="hidden">try</button>
+</body>
+</html>

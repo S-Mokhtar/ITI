@@ -1,0 +1,33 @@
+1- To install network manager in both vm:
+	sudo apt install network-manager
+	sudo nano /etc/default/grub
+	edit line GRUB_CMDLINE_LINUX="", and inside "" add 
+				net.ifnames=0 biosdevname=0
+	sudo grub-mkconfig -o /boot/grub/grub.cfg
+	sudo touch /etc/NetworkManager/conf.d/10-globally-managed-devices.conf
+	sudo reboot
+2-To install firewall in both vm:
+	sudo apt install firewalld
+    	sudo systemctl enable --now firewalld
+   	sudo firewall-cmd --add-service=http
+3-Configure the scenario:
+  In vm1:
+	sudo nmcli con add con-name ExternalIF type ethernet ifname eth0 ip4 192.168.1.200/24 gw4 192.168.1.1
+   	sudo nmcli con mod ExternalIF ipv4.dns 192.168.1.1
+	sudo nmcli con mod ExternalIF connection.zone external
+	sudo nmcli con up ExternalIF
+	sudo nmcli con add con-name InternalIF type ethernet ifname eth1 ip4 192.168.10.1/24
+	sudo nmcli con up InternalIF
+  In vm2:
+   	sudo nmcli con add con-name mylan type ethernet ifname eth0 ip4 192.168.10.2/24 gw4 192.168.10.1
+	sudo nmcli con mod mylan ipv4.dns 192.168.1.1
+    	sudo nmcli con mod mylan connection.zone external
+	sudo nmcli con up mylan 
+	sudo apt update
+
+4-To install apache2 in vm2:
+   	sudo apt install apache2
+    	sudo apt start apache2
+	
+5-To enable access to apache2 in vm2 from vm1:
+	curl 192.168.10.1

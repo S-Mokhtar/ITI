@@ -1,0 +1,8 @@
+{
+    "name":"simple/verysimple",
+    "description":"simple api",
+    "require": {
+        "guzzlehttp/guzzle": "~6.0",
+        "ext-json": "*"
+    }
+}

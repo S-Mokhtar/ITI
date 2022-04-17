@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!--<!DOCTYPE company SYSTEM "Task1.dtd">-->
+<!--<?xml-stylesheet type="text/css" href="Task1.css"?>-->
+<!--<?xml-stylesheet type="text/xsl" href="Task1.xsl"?>-->
+<employees>
+
+    
+    <employee>
+        <name>shaimaa</name>
+        <phone>23</phone>
+        <address>Sedibeshr</address>
+        <email>shaimaa@hotmail.com</email>
+    </employee>
+    <employee>
+        <name>HAMADA</name>
+        <phone>773372</phone>
+        <address>Elshatby</address>
+        <email>HAMADA@gmail.com</email>
+    </employee>
+</employees>

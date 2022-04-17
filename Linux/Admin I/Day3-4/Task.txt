@@ -1,0 +1,15 @@
+Task1:
+sudo apt update
+sudo apt install chrony
+sudo service chronyd start
+sudo chronyc activity
+sudo chronyc tracking
+
+Task2:
+sudo apt install mysql-server
+sudo service mysql start
+sudo mysql_secure_installation
+sudo mysql -u root -p
+create database itidb
+use itidb;
+create table employeeTBL(id int primary key,name varchar(60),email varchar(60));

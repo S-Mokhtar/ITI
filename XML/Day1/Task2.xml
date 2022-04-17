@@ -1,0 +1,155 @@
+<?xml version="1.0"?>
+<?xml-stylesheet type="text/css" href="Library.css"?> 
+<Library>
+	    <location>Miami</location>
+        <description>New Library</description>
+        <librarian>Shaimaa</librarian>
+	    <books>
+			<book>
+                <title>Java</title>
+                <ISBN>4425552</ISBN>
+                <Author>Ahmed</Author> 
+                <preface>Introduction</preface>
+                <parts>
+                    <part>
+                        <title>Titlep1</title>
+                        <chapters>
+                             <chapter>
+                                <element>Elemp1ch1</element>
+                                <title>Titlep1ch1</title>
+                                <summary>Summaryp1ch1</summary>
+                                <sections>
+                                    <section>
+                                         <content type="paragraph">Contentp1ch11</content>
+                                    </section>
+                                    <section>
+                                          <content type="paragraph">Contentp1ch12</content>
+                                    </section>
+                                </sections>
+                            </chapter>
+                            <chapter>
+                                <element>Elemtp1ch2</element>
+                                <title>Titlep1ch2</title>
+                                <summary>Summaryp1ch2</summary>
+                                <sections>
+                                    <section>
+                                        <content type="paragraph">Contentp1ch21</content>
+                                    </section>
+                                    <section>
+                                         <content type="paragraph">Contentp1ch22</content>
+                                    </section>
+                                </sections>
+                            </chapter>
+                        </chapters>
+                    </part>
+                    <part>
+                         <title>Titlep2</title>
+                        <chapters>
+                            <chapter>Each chapter has title and contains a summary and many sections.
+                                <element>Elemp2ch1</element>
+                                <title>Shaimaa</title>
+                                <summary>Summaryp2ch1</summary>
+                                <sections>
+                                    <section>
+                                         <content type="paragraph">Contentp2ch11</content>
+                                    </section>
+                                    <section>
+                                          <content type="paragraph">Contentp2ch12</content>
+                                    </section>
+                                </sections>
+                            </chapter>
+                            <chapter>
+                                <element>Elemep2ch2</element>
+                                <title>Titlep2ch2</title>
+                                <summary>Summaryp2ch2</summary>
+                                <sections>
+                                    <section>
+                                        <content type="paragraph">Contentp2ch21</content>
+                                    </section>
+                                    <section>
+                                         <content type="paragraph">Contentp2ch22</content>
+                                    </section>
+                                </sections>
+                            </chapter>
+                        </chapters>
+                    </part>
+                </parts>
+            </book>
+			<book>
+                <title>C#</title>
+                <ISBN>272772</ISBN>
+                <Author>Abdalah</Author>
+                <preface>Introduction</preface>
+                <parts>
+                    <part>
+                        <title>Titlep1</title>
+                        <chapters>
+                            <chapter>
+                                <element>Elemep1ch1</element>
+                                <title>Titlep1ch1</title>
+                                <summary>Summaryp1ch1</summary>
+                                <sections>
+                                    <section>
+                                         <content type="paragraph">Contentp1ch11</content>
+                                    </section>
+                                    <section>
+                                          <content type="paragraph">Contentp1ch12</content>
+                                    </section>
+                                </sections>
+                            </chapter>
+                            <chapter>
+                                <element>Elemtp1ch2</element>
+                                <title>Titlep1ch2</title>
+                                <summary>Summaryp1ch2</summary>
+                                <sections>
+                                    <section>
+                                        <content type="paragraph">Contentp1ch21</content>
+                                    </section>
+                                    <section>
+                                         <content type="paragraph">Contentp1ch22</content>
+                                    </section>
+                                </sections>
+                            </chapter>
+                        </chapters>
+                    </part>
+                    <part>
+                         <title>Titlep2</title>
+                        <chapters>
+                             <chapter>
+                                <element>Elemp2ch1</element>
+                                <title>Titlep2ch1</title>
+                                <summary>Summaryp2ch1</summary>
+                                <sections>
+                                    <section>
+                                         <content type="paragraph">Contentp2ch11</content>
+                                    </section>
+                                    <section>
+                                          <content type="paragraph">Contentp2ch12</content>
+                                    </section>
+                                </sections>
+                            </chapter>
+                            <chapter>
+                                <element>Elemp2ch2</element>
+                                <title>Titlep2ch2</title>
+                                <summary>Summaryp2ch2</summary>
+                                <sections>
+                                    <section>
+                                        <content type="paragraph">Contentp2ch21</content>
+                                    </section>
+                                    <section>
+                                         <content type="paragraph">Contentp2ch22</content>
+                                    </section>
+                                </sections>
+                            </chapter>
+                        </chapters>
+                    </part>
+                </parts>
+            </book>
+        </books>
+    
+    </Library>
+    
+
+
+
+    

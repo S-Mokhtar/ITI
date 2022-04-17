@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1640176194 source:f:\iti\oop\lab 4\main.cpp
+	<iostream>
+	<string.h>
+

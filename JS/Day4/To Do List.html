@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To Do List</title>
+    <style>
+        * {
+  box-sizing: border-box;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+ul li {
+  cursor: pointer;
+  position: relative;
+  padding: 12px 8px 12px 40px;
+  background: #eee;
+  font-size: 18px;
+  transition: 0.2s;
+}
+
+ul li:hover {
+  background: #ddd;
+}
+
+.close {
+  position: absolute;
+  right: 0;
+  top: 0;
+  padding: 12px 16px 12px 16px;
+}
+
+.close:hover {
+  background-color: #f44336;
+  color: white;
+}
+
+.done {
+  position: absolute;
+  right: 50px;
+  top: 0;
+  padding: 12px 16px 12px 16px;
+}
+
+.header {
+  padding: 30px 40px;
+  color: white;
+  text-align: center;
+}
+
+input {
+  margin: 0;
+  border-radius: 5px;
+  width: 40%;
+  padding: 10px;
+  font-size: 16px;
+}
+
+label{
+    font-size: 25px;
+    color: #555;
+    margin: 7px;
+    font-weight: bold;
+}
+
+.addBtn {
+  padding: 10px;
+  width: 15%;
+  background: rgb(107, 107, 231);
+  color: #555;
+  text-align: center;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.3s;
+  border-radius: 0;
+}
+
+.addBtn:hover {
+  background-color: #bbb;
+}
+    
+</style>
+</head>
+<body>
+<ul id="myUL">
+  <li>Attend Lect 2</li>
+  <li class="checked">Complete Lab 2</li>
+  <li>Complete Bonus</li>
+</ul>
+<div id="myDIV" class="header">
+    <label for="myInput">Task</label>
+    <input type="myInput" id="myInput" name="myInput" placeholder="Task name">
+    <button onclick="newElement()" class="addBtn">Add</button>
+  </div>
+<script>
+
+var myNodelist = document.getElementsByTagName("LI");
+for (var i = 0; i < myNodelist.length; i++) {
+  var spanc = document.createElement("SPAN");
+ var txt = document.createTextNode("\u00D7");
+  spanc.className = "close";
+  spanc.appendChild(txt);
+  var spand = document.createElement("SPAN");
+  spand.innerHTML="&checkmark;";
+  spand.className = "done";
+  myNodelist[i].appendChild(spanc);
+  myNodelist[i].appendChild(spand);
+}
+
+var close = document.getElementsByClassName("close");
+var i;
+for (i = 0; i < close.length; i++) {
+  close[i].onclick = function() {
+    var div = this.parentElement;
+    div.style.display = "none";
+  }
+}
+
+var done = document.getElementsByClassName("done");
+var i;
+for (i = 0; i < done.length; i++) {
+  done[i].onclick = function() {
+    var div = this.parentElement;
+  div.style.backgroundColor="green";
+  }
+}
+
+/*const createTodo = (todo) => {
+  return `<div class="myUL">
+                <div>${todo.inputValue}</div>
+                <button class="done"</button>
+                <button class="colse"></button>
+            </div>`;
+};*/
+
+let savedTasks= [];
+const todoListContainer = document.getElementById('myUL');
+function newElement() {
+  var li = document.createElement("li");
+  var inputValue = document.getElementById("myInput").value;
+  var t = document.createTextNode(inputValue);
+  li.appendChild(t);
+  if (inputValue === '') {
+    alert("You must write something!");
+  } else {
+    document.getElementById("myUL").appendChild(li);
+    localStorage.setItem("tasks", JSON.stringify(inputValue)); 
+    savedTasks.push(JSON.parse(localStorage.getItem("tasks")));
+    localStorage.setItem("tasks", JSON.stringify(savedTasks)); 
+    if (savedTasks.length) {
+      savedTasks.forEach(todo => {
+        todoListContainer.innerHTML += createTodo(todo);
+      });
+  } 
+  }
+
+  document.getElementById("myInput").value = "";
+  var myNodelist2 = document.getElementsByTagName("myUL");
+  for (var i = 0; i < myNodelist2.length; i++) {
+  var span = document.createElement("SPAN");
+  var txt = document.createTextNode("\u00D7");
+  span.className = "close";
+  var spand = document.createElement("SPAN");
+  spand.innerHTML="&checkmark;";
+  spand.className = "done";
+  span.appendChild(txt);
+  li.appendChild(span);
+  li.appendChild(spand);
+  }
+  for (i = 0; i < close.length; i++) {
+    close[i].onclick = function() {
+      var div = this.parentElement;
+      div.style.display = "none";
+    }
+    done[i].onclick = function() {
+    var div = this.parentElement;
+  div.style.backgroundColor="green";
+    }
+  }
+}
+</script>
+</body>
+</html>

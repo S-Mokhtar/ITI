@@ -4,7 +4,7 @@
 
 @section('content')
 <div class="container p-5">
-    <form method="post" action="{{route('posts.destroy')}}">
+    <form method="post" action="{{route('posts.destroy',$posts->id)}}">
         <p class="lead text-center">Are you sure you want to delete this post?</p>
         <div class="d-flex justify-content-center align-items-center">
             <div class="px-2">
@@ -14,7 +14,7 @@
                 <x-button to="{{route('posts.index')}}" text="Cancel" type="light" />
             </div>
         </div>
-        @method('delete')
+        @method('DELETE')
         @csrf
     </form>
 </div>

@@ -3,7 +3,7 @@
 @section('title')Edit @endsection
 
 @section('content')
-        <form method="POST" action="{{ route('posts.update',$posts->id)}}">
+        <form method="POST" action="{{ route('posts.update',$posts->id)}}" enctype="multipart/form-data">
             @csrf
             <div class="mb-3">
                 <label for="exampleFormControlInput1" class="form-label">Title</label>
@@ -22,6 +22,10 @@
                 @endforeach
                 </select>
             </div>
+            <div class="mb-3">
+        <label for="image">Image</label>
+        <input type="file" class="form-control-file" name="image">
+    </div>
 
           <button class="btn btn-primary">Update</button>
         </form>

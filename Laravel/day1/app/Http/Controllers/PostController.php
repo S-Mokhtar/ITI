@@ -2,6 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StorePostRequest;
+use App\Http\Requests\UpdatePostRequest;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Models\Post;
 use App\Models\User;
@@ -34,14 +38,16 @@ class PostController extends Controller
         ]);
     }
 
-    public function store()
+    public function store(StorePostRequest $request)
     {
         $data = request()->all(); //== $_POST
         Post::create([
             'title' => $data['title'],
             'description' => $data['description'],
             'user_id' => $data['post_creator'],
+            'image'=>$request->file('image'),
         ]);
+        
         return to_route('posts.index');
     }
 
@@ -70,7 +76,7 @@ class PostController extends Controller
         ]);
     }
 
-    public function update($postId)
+    public function update(UpdatePostRequest $request, $postId)
     {
         $post = Post::find($postId);
         $data = request()->all();

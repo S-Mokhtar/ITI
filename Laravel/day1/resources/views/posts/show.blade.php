@@ -20,8 +20,8 @@
             Post creator info
         </div>
         <div class="card-body">
-            <p class="lead"><strong>Name: </strong>{{ $posts->post_creator}}</p>
-            <p class="lead"><strong>Email: </strong>{{ $posts->post_creator}}@gmail.com</p>
+            <p class="lead"><strong>Name: </strong>{{ $posts->user->name}}</p>
+            <p class="lead"><strong>Email: </strong>{{ $posts->user->name}}@gmail.com</p>
             <p class="lead"><strong>Created At: </strong>{{\Carbon\Carbon::parse($posts->created_at)->isoFormat('dddd Do of MMMM YYYY h:mm:ss A')}}</p>
         </div>
     </div>

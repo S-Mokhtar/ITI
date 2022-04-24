@@ -13,6 +13,8 @@
       <th scope="col">Title</th>
       <th scope="col">Posted By</th>
       <th scope="col">Created At</th>
+      <th scope="col">Slug</th>
+      <th scope="col">Image</th>
       <th scope="col">Actions</th>
     </tr>
   </thead>
@@ -26,8 +28,9 @@
       @else
       <td>Not Found</td>
       @endif
-      <!--<td>{{$post->user ? $post->user->name : 'Not Found'}}</td>-->
       <td>{{\Carbon\Carbon::parse($post->created_at)->format('Y-m-d') }}</td>
+      <td>{{$post->slug ? $post->slug : 'Not Found'}}</td>
+      <td>{{$post->image ? $post->image : 'Not Found'}}</td>
       <td>
         <div class="d-flex">
           <x-button to="{{route('posts.show', ['post' =>$post->id])}}" text="View" type="primary" />

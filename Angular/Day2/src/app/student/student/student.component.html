@@ -1,0 +1,22 @@
+<div>
+    Student ID: {{std.id}}
+    Student Name: {{std.name}}
+    Student Age: {{std.age}}
+    Student Department: {{std.dept}}
+</div>
+<table class="table table-striped table-hover table-bordered">
+    <thead>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Age</th>
+        <th>Department</th>
+    </thead>
+    <tbody>
+        <tr *ngFor="let item of stds ">
+            <td>{{item.id}}</td>
+            <td>{{item.name}}</td>
+            <td>{{item.age}}</td>
+            <td>{{item.dept}}</td>
+        </tr>
+    </tbody>
+</table>

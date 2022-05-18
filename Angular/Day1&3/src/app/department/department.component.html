@@ -1,0 +1,99 @@
+{{ 10 | powerTox: 2 }}
+{{ "ITI-OS" | stringConvert }}
+<ul>
+  <li *ngFor="let item of names | arraySplice: 'Al'">
+    {{ item }}
+  </li>
+</ul>
+
+<input type="text" [(ngModel)]="product.name" placeholder="Enter Name" />
+<input type="text" [(ngModel)]="product.code" placeholder="Enter Code" />
+<input type="date" [(ngModel)]="product.available" />
+<input type="number" [(ngModel)]="product.price" placeholder="Enter Price" />
+<input type="number" [(ngModel)]="product.rate" placeholder="Enter Rate" />
+<button class="btn btn-primary ms-2" (click)="add()">Create</button>
+
+<table class="table table-striped table-hover table-bordered">
+  <thead>
+    <th>Product</th>
+    <th>Code</th>
+    <th>Available</th>
+    <th>Price</th>
+    <th>5 Star Rating</th>
+     <th>Image</th> 
+    <th>Actions</th>
+  </thead>
+  <tbody>
+    <tr *ngFor="let product of products">
+      <td #name>{{ product.name }}</td>
+      <td>{{ product.code | stringConvert }}</td>
+      <td>{{ product.available | date: "MMMM dd,yyyy" }}</td>
+      <td>{{ product.price | currency }}</td>
+      <td><app-star [rating]="product.rate"></app-star></td>
+      <td>
+        <img style="width: 30px;"
+          *ngIf="showImage == true"
+          src="../../assets/{{ product.image }}"
+        />
+      </td>
+      <td>
+        <button class="btn btn-info m-2" (click)="show(name.innerHTML)">
+          Show
+        </button>
+        <button class="btn btn-danger m-2" (click)="delete(name.innerHTML)">
+          Delete
+        </button>
+        <button class="btn btn-success m-2" (click)="edit(name.innerHTML)">
+          Edit
+        </button>
+        <button class="btn btn-info m-2" (click)="showImages()">
+        Show Image
+      </button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<div>
+  Product Info:
+  <div>Product Name: {{ product.name }}</div>
+  <div>Product Code: {{ product.code }}</div>
+  <div>Product Date: {{ product.available | date: "dd/MM/yyyy" }}</div>
+  <div>Product Price: {{ product.price }}</div>
+  <div>Product Rate: {{ product.rate }}</div>
+</div>
+
+<div *ngIf="productToEdit != null">
+  <input
+    type="text"
+    [(ngModel)]="product.name"
+    placeholder="Enter Name"
+    class="form-control"
+  />
+  <input
+    type="text"
+    [(ngModel)]="product.code"
+    placeholder="Enter Code"
+    class="form-control"
+  />
+  <input
+    type="date"
+    [(ngModel)]="product.available"
+    placeholder="Enter Date"
+    class="form-control"
+  />
+  <input
+    type="number"
+    [(ngModel)]="product.price"
+    placeholder="Enter Price"
+    class="form-control"
+  />
+  <input
+    type="number"
+    [(ngModel)]="product.rate"
+    placeholder="Enter Rate"
+    class="form-control"
+  />
+  <button class="btn btn-primary mt-2" (click)="update()">Update</button>
+</div>
+<hr />

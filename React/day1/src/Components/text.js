@@ -8,20 +8,24 @@ class Text extends Component {
     }
     render() {
         return (
-            <div>
-                <input
-                    type="text"
-                    value={this.state.userName}
-                    onChange={(e) => {
-                        this.setState({ userName: e.target.value });
-
-                    }}
-                />
-                <p>{this.state.userName}</p>
-                <button onClick={(e) => {
-                    this.setState({ userName: '' });
-                }}>Reset</button>
-            </div>
+          <div>
+            <input
+              type="text"
+              value={this.state.userName}
+              onChange={(e) => {
+                this.setState({ userName: e.target.value });
+              }}
+            />
+            <p>{this.state.userName}</p>
+            <button
+              className="btn btn-info mb-2"
+              onClick={(e) => {
+                this.setState({ userName: "" });
+              }}
+            >
+              Reset
+            </button>
+          </div>
         );
     }
 

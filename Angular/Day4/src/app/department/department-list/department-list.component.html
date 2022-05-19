@@ -1,0 +1,16 @@
+<table>
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Name</th>
+      <th>Location</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let dept of deptlst">
+        <td>{{dept._id}}</td>
+        <td>{{dept.name}}</td>
+        <td>{{dept.location}}</td>
+    </tr>
+  </tbody>
+</table>

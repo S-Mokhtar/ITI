@@ -1,0 +1,13 @@
+<form #signup="ngForm" (ngSubmit)="add()">
+    <input type='number' #uid="ngModel" [(ngModel)]="user.id" name='id' required/>
+    <span *ngIf="uid.invalid">*ID is required</span><br><br>
+    <input type='text' #uname="ngModel" [(ngModel)]="user.name" name='name' required minlength="3"/>
+    <span *ngIf="uname.errors?.['required'] && uname.touched">*Name is required</span>
+    <span *ngIf="uname.errors?.['minlength'] && uname.touched"> *Minimum length is three characters</span><br><br>
+    <input type='text' #uemail="ngModel" [(ngModel)]="user.email" name='email' required pattern="[a-zA-Z0-9_]*@[a-zA-Z0-9]+.[a-zA-z]{2,4}"/>
+    <span *ngIf="uemail.errors?.['pattern'] && uemail.touched">*Email is invalid</span>
+    <span *ngIf="uemail.errors?.['required'] && uemail.touched">*Email is required</span><br>
+    <input type="submit" [disabled]="signup.invalid"/>
+</form>
+<button (click)="showForm(uname)">Show</button>
+{{signup.value|json}}

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { DepartmentService } from 'src/app/department.service';
 import { Department } from 'src/app/_models/department';
 
@@ -11,8 +12,9 @@ export class DepartmentAddComponent implements OnInit {
   ndept:Department=new Department(0,'','');
   save(){
     this.deptser.addDepartment(this.ndept);
+    this.router.navigate(['/departments','list']);
   }
-  constructor(public deptser: DepartmentService) {}
+  constructor(public deptser: DepartmentService, public router:Router) {}
 
   ngOnInit(): void {}
 }

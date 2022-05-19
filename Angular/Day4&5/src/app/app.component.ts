@@ -7,5 +7,5 @@ import { DepartmentService } from './department.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'Day4';
+  title = 'Day4&5';
 }

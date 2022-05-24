@@ -1,0 +1,1 @@
+[('day', 3), ('year', 3), ('month', 3), ('jan', 3), ('break', 3), ('the', 2), ('session', 2)]

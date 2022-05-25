@@ -36,6 +36,14 @@ from typing import Counter
 #     return print('Done')
 # result = file()
 
+# f = open(sys.argv[1], 'r')
+# content = f.read()
+# f.close()
+# words=[res[0] for res in Counter(content.split()).most_common(20)]
+# f=open('popular_words.txt', 'w')
+# f.write(" ".join(words))
+# f.close()
+
 # def vowels():
 #     string = 'Mahitab Shaimaa'
 #     vowels = ('a', 'e', 'i', 'o', 'u')

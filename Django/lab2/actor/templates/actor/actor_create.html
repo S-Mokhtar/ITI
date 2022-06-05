@@ -1,0 +1,15 @@
+{% extends 'general_templates/base.html'%}
+
+{% block body_content%}
+<div class="col-6 offest-3 mx-auto mt-5">
+<form action="{% url 'actor:create'%}" method="POST">
+    {% csrf_token %}
+
+    {{form.as_p}}
+
+    <button type="submit">Create</button>
+
+</form>
+</div>
+
+{%endblock%}

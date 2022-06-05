@@ -1,0 +1,40 @@
+{% extends 'general_templates/base.html'%}
+
+{% block body_content%}
+<div class="col-6 offest-3 mx-auto mt-5">
+<a class="btn btn-success" href="{% url 'actor:create'%}"> Create Actor</a>
+
+<table class="table table-condensed">
+    <thead>
+    <tr>
+        <td>Actor Name</td>
+        <td>Actor Gender</td>
+        <td>Profile image</td>
+        <td>Actions</td>
+    </tr>
+    </thead>
+    <tbody>{% for actor in actors %}
+    <tr>
+        <td> {{actor}}</td>
+        <td>
+            {{actor.gender}}
+        </td>
+        <td>
+           <image style="width:30px; height: 30px" src ="../../../static/generic_static/images/{{actor.profile_img}}"></image> 
+        </td>
+        <td>
+            <a class="btn btn-success" href="{% url 'actor:update' actor.id%}"> Update</a>
+            <a class="btn btn-danger" href="{% url 'actor:delete' actor.id %}">Delete </a>
+            <a class="btn btn-info" href="{% url 'actor:detail' actor.id%}"> Details</a>
+        </td>
+    </tr>
+
+    {% endfor %}
+
+
+    </tbody>
+</table>
+</div>
+
+
+{%endblock%}

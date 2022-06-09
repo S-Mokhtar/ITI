@@ -1,0 +1,94 @@
+@import url("https://fonts.googleapis.com/css2?family=Merriweather:wght@900&display=swap");
+
+.addStudent {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.addStudent input {
+  margin: auto;
+  text-align: center;
+  border-radius: 20px;
+  outline: none;
+  border: 1px solid gray;
+}
+
+.header {
+  text-align: center;
+  background-color: darkgray;
+  border-radius: 20px;
+  padding: 15px;
+}
+
+.studentItem {
+  background-color: rgb(45, 221, 221);
+  text-align: center;
+  width: 50%;
+  position: relative;
+}
+
+.active {
+  color: rgb(53, 186, 219);
+}
+
+#menu-outer {
+  height: 84px;
+}
+
+ul#horizontal-list {
+  min-width: 696px;
+  list-style: none;
+  padding-top: 20px;
+}
+
+ul#horizontal-list li {
+  display: inline;
+  margin: 10px;
+  text-decoration: none;
+}
+
+body {
+  font-family: "Merriweather", serif;
+  margin: 0;
+  background-color: #ececec;
+  text-align: center;
+  color: rgb(15, 12, 12);
+  user-select: none;
+  padding-top: 18vh;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+h2 {
+  font-size: 50px;
+  margin: 0;
+}
+
+h3 {
+  font-size: 40px;
+  margin: 20px;
+}
+
+p {
+  font-size: 18px;
+  margin: 5px;
+}
+
+p:last-of-type {
+  margin-bottom: 35px;
+}
+
+a {
+  text-decoration: none;
+}
+
+h4 {
+  color: rgb(0, 0, 0);
+  margin: 1px;
+}

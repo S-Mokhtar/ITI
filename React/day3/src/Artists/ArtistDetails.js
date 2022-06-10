@@ -34,7 +34,7 @@ let ArtistDetails = () => {
   };
 
   useEffect(() => {
-    fetch(`http://localhost:3002/artists/${id}`)
+    fetch(`http://localhost:3001/artists/${id}`)
       .then((response) => {
         return response.json();
       })

@@ -17,7 +17,7 @@ export default class ArtistsList extends Component {
       });
     } else if (this.state.errMsg) {
       return (
-        <h1 className="alert alert-danger">Check ur Internet Connection</h1>
+        <h1 className="alert alert-danger">Check The Internet Connection</h1>
       );
     } else {
       return <h1>Getting Data...</h1>;
@@ -33,7 +33,7 @@ export default class ArtistsList extends Component {
   }
 
   componentDidMount() {
-    fetch("http://localhost:3002/artists")
+    fetch("http://localhost:3001/artists")
       .then((response) => {
         return response.json();
       })

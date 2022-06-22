@@ -1,0 +1,22 @@
+{% extends 'general_templates/base.html' %} {% block body_content %}
+<div class="col-6 offest-3 mx-auto mt-5">
+  <table class="table table-hover mt-5">
+    <thead>
+      <tr>
+        <td>Movie Name</td>
+        <td>Production year</td>
+        <td>Creation time</td>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr>
+        <td>{{movie.name}}</td>
+        <td>{{movie.production_year}}</td>
+        <td>{{movie.creation_time}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+{% endblock %}

@@ -67,3 +67,18 @@
 #     puts sum
 # end
 # suma([1,2,17,1,2])
+
+#Bonus
+def twoSum arr,target
+    hash = {}
+    arr.each_with_index do |value, i|
+        temp = target - value
+        if hash[temp]
+            return [hash[temp], i]
+        else
+            hash[value] = i
+        end
+    end
+end
+
+p twoSum [2,7,11,15] ,9

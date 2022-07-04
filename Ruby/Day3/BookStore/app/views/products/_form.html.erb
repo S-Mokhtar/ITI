@@ -1,0 +1,28 @@
+<div class="offset-3 col-6 mt-3">
+<%= form_with model: @product do |form| %>
+  <p>
+    <%= form.label :name %><br>
+    <%= form.text_field :name %>
+  </p>
+  <p>
+    <%= form.label :price %><br>
+    <%= form.text_field :price %>
+  </p>
+    <%if @product.new_record?%>
+    <p>
+    <%= form.label :admin_id %><br>
+    <%= form.text_field :admin_id %>
+  </p>
+  <%end%>
+    <p>
+    <%= form.label :description %><br>
+    <%= form.text_area :description %>
+  </p>
+  <p>
+    <%= form.submit %>
+  </p>
+    <p>
+    <%= link_to "Back", products_path ,class:"btn btn-primary"%>
+  </p>
+  <%end%>
+  </div>

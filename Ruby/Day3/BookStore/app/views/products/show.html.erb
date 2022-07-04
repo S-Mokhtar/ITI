@@ -1,0 +1,16 @@
+
+<div class="card offset-3 col-6 mt-3">
+  <div class="card-header">
+    Product Details
+  </div>
+  <div class="card-body">
+    <h5 class="card-title"><%= @product.name %></h5>
+    <p class="card-text"><%= @product.description %></p>
+    <p class="card-text"><%= @product.price %></p>
+    <p class="card-text"><%= @product.created_at %></p>
+    <p class="card-text"><%= @product.updated_at %></p>
+    <%= link_to "Back", products_path , class: "btn btn-primary"%>
+  </div>
+
+    
+</div>

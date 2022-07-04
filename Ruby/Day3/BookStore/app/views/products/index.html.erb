@@ -1,0 +1,33 @@
+<div class="offset-3 col-6 mt-3">
+<h1>Products</h1>
+<table class="table table-striped">
+  <thead>
+   <th>Name</th>
+    <th>Price</th>
+    <th>Description</th>
+    <th>Admin</th>
+    <th>Actions</th>
+  </thead>
+  <tbody>
+    <%= link_to "Create",new_product_path ,class:"btn btn-primary "%>
+  <% @products.each do |product| %>
+
+    <tr>
+      <td> <%= product.name %></td>
+      <td> <%= product.price %></td>
+      <td> <%= product.description %></td>
+      <td> <a href="/admins/<%= product.admin.id%>" style="text-decoration:none"><%= product.admin.name%></a></td>
+ 
+      <td>
+      <div class="d-flex"> 
+      <%= link_to "Show",product_path(product) , class:"btn btn-primary"%>
+      <%= link_to "Update", edit_product_path(product) , class:"btn btn-success mx-2"%>
+      <%= button_to "Delete", product_path(product), method: :delete , class: "btn btn-danger" %>
+      </div>
+      </td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+</div>
+

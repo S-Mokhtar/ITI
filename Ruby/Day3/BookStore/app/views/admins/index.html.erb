@@ -1,0 +1,10 @@
+<h1>Admins</h1>
+<ul>
+  <% @admins.each do |admin| %>
+    <li>
+      <a href="/admins/<%= admin.id %>">
+        <%= admin.name %>
+      </a>
+    </li>
+  <% end %>
+</ul>
